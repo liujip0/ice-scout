@@ -1,16 +1,12 @@
-name = "isa2025-api"
+name = "ice-scout-api"
 compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2024-10-22"
 main = "src/index.ts"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "isa2025-db"
-database_id = "beb7b5e5-4196-4a8f-807d-5a5cb56be206"
-
-[[kv_namespaces]]
-binding = "KV"
-id = "5bfff9b720da468ebce0b001dbbd0b61"
+database_name = "ice-scout-db"
+database_id = "156193ef-d400-4968-9c70-4a730b3e1449"
 
 [observability]
 enabled = true
