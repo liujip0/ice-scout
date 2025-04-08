@@ -80,6 +80,7 @@ export default function Prematch({
           label="Scout Team Number"
           error={scoutTeamNumberError !== ""}
           helperText={scoutTeamNumberError}
+          disabled
         />
 
         <Stack
