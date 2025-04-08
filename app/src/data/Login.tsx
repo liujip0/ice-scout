@@ -1,4 +1,4 @@
-import { User } from "@isa2025/api/src/utils/dbtypes.ts";
+import { User } from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Avatar,

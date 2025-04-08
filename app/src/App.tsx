@@ -1,4 +1,4 @@
-import { DBEvent, Match } from "@isa2025/api/src/utils/dbtypes.ts";
+import { DBEvent, Match } from "@ice-scout/api/src/utils/dbtypes.ts";
 import EventEmitter from "events";
 import { useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

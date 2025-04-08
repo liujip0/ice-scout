@@ -37,7 +37,7 @@ pnpm install
 Create a file called `.env.local` in `app/src/`
 
 ```env
-VITE_SERVER_URL="http://localhost:8787"
+VITE_SERVER_URL="http://localhost:8788"
 ```
 
 Create a file called `.dev.vars` in `api/`
@@ -63,7 +63,7 @@ cd api
 Initialize local database
 
 ```zsh
-npx wrangler d1 execute isa2025-db --file=./migrations/0000_initialize.sql
+npx wrangler d1 execute ice-scout-db --file=./migrations/0000_initialize.sql
 ```
 
 Return to original folder
@@ -78,4 +78,4 @@ cd ..
 pnpm dev
 ```
 
-The frontend will be on `localhost:5173` and the backend will be on `localhost:8787`.
+The frontend will be on `localhost:5174` and the backend will be on `localhost:8788`.

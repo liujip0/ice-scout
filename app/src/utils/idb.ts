@@ -4,12 +4,12 @@ import {
   Match,
   MatchLevel,
   TeamMatchEntry,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import { DBSchema, openDB } from "idb";
 import { ExportMatchEntry } from "../scout/SavedMatches.tsx";
 
 const version = 4;
-const dbname = "isa2025-idb";
+const dbname = "ice-scout-idb";
 
 export enum Stores {
   Events = "DBEvents",

@@ -3,7 +3,7 @@ import {
   UserColumn,
   UserColumns,
   UserPermLevel,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Delete, Edit, FilterAltOff, Refresh } from "@mui/icons-material";
 import {
   Button,

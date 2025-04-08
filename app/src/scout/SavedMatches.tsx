@@ -9,12 +9,12 @@ import {
   TeamMatchEntryColumn,
   TeamMatchEntryColumns,
   TeamMatchEntryInit,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import {
   matchFileName,
   matchLevelAbbrev,
   omit,
-} from "@isa2025/api/src/utils/utils.ts";
+} from "@ice-scout/api/src/utils/utils.ts";
 import {
   Close,
   CloudSync,

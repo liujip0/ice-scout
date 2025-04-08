@@ -1,4 +1,4 @@
-import { TeamMatchEntry } from "@isa2025/api/src/utils/dbtypes.ts";
+import { TeamMatchEntry } from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Box, Divider, Stack, ToggleButtonGroup } from "@mui/material";
 import {
   StyledRedToggleButton,

@@ -2,8 +2,8 @@ import {
   DBEvent,
   Match,
   MatchColumns,
-} from "@isa2025/api/src/utils/dbtypes.ts";
-import { omit } from "@isa2025/api/src/utils/utils.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
+import { omit } from "@ice-scout/api/src/utils/utils.ts";
 import { Delete, Done } from "@mui/icons-material";
 import {
   Button,

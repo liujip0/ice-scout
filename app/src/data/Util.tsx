@@ -1,4 +1,4 @@
-import { dateFileName } from "@isa2025/api/src/utils/utils.ts";
+import { dateFileName } from "@ice-scout/api/src/utils/utils.ts";
 import { Close, Download, FileUpload, Send } from "@mui/icons-material";
 import { Button, IconButton, Snackbar, Stack, TextField } from "@mui/material";
 import { useState } from "react";

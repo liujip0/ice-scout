@@ -1,4 +1,4 @@
-import { MAX_TEAM_NUMBER } from "@isa2025/api/src/utils/constants.ts";
+import { MAX_TEAM_NUMBER } from "@ice-scout/api/src/utils/constants.ts";
 import {
   Alliance,
   DBEvent,
@@ -7,7 +7,7 @@ import {
   Match,
   TeamMatchEntry,
   TeamMatchEntryInit,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import EventEmitter from "events";
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";

@@ -1,4 +1,4 @@
-import { MAX_TEAM_NUMBER } from "@isa2025/api/src/utils/constants.ts";
+import { MAX_TEAM_NUMBER } from "@ice-scout/api/src/utils/constants.ts";
 import {
   DBEvent,
   HumanPlayerEntry,
@@ -6,7 +6,7 @@ import {
   Match,
   TeamMatchEntry,
   TeamMatchEntryNoShowInit,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Box, Button, Stack, Tab, Tabs } from "@mui/material";
 import EventEmitter from "events";
 import { useEffect, useRef, useState } from "react";

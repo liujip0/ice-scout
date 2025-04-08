@@ -3,8 +3,8 @@ import {
   HumanPlayerEntryInit,
   TeamMatchEntryColumns,
   TeamMatchEntryInit,
-} from "@isa2025/api/src/utils/dbtypes.ts";
-import { dateFileName } from "@isa2025/api/src/utils/utils.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
+import { dateFileName } from "@ice-scout/api/src/utils/utils.ts";
 import {
   ContentCopy,
   Contrast,

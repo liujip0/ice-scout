@@ -1,7 +1,7 @@
 import {
   HumanPlayerEntryColumns,
   TeamMatchEntryColumns,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Box, Stack, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { Link, Route, Routes, useResolvedPath } from "react-router-dom";

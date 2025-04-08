@@ -3,7 +3,7 @@ import {
   Match,
   MatchLevel,
   TeamMatchEntry,
-} from "@isa2025/api/src/utils/dbtypes.ts";
+} from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Add, Remove } from "@mui/icons-material";
 import {
   Box,

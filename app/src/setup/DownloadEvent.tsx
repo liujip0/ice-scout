@@ -1,5 +1,5 @@
-import { DBEvent, Match } from "@isa2025/api/src/utils/dbtypes.ts";
-import { omit } from "@isa2025/api/src/utils/utils.ts";
+import { DBEvent, Match } from "@ice-scout/api/src/utils/dbtypes.ts";
+import { omit } from "@ice-scout/api/src/utils/utils.ts";
 import {
   Box,
   Button,
