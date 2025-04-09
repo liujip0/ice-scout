@@ -26,8 +26,6 @@ export default function Scout({
   const navigate = useNavigate();
   useEffect(() => {
     if (
-      (deviceSetup.fieldOrientation !== "processor" &&
-        deviceSetup.fieldOrientation !== "barge") ||
       !deviceSetup.currentEvent ||
       !Number.isInteger(deviceSetup.deviceTeamNumber) ||
       !deviceSetup.deviceTeamNumber ||
