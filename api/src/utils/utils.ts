@@ -12,13 +12,9 @@ export function omit(keys: string[], obj: Record<string, unknown>) {
 
 export function matchLevelAbbrev(matchLevel: (typeof MatchLevel)[number]) {
   switch (matchLevel) {
-    case "None":
-      return "n";
-    case "Practice":
-      return "p";
-    case "Qualification":
+    case "QUALIFICATION":
       return "q";
-    case "Playoff":
+    case "PLAYOFF":
       return "t";
   }
 }

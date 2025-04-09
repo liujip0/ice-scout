@@ -61,7 +61,7 @@ export default function CreateEvent({
     >
   >({
     eventKey: "",
-    matchLevel: "Qualification",
+    matchLevel: "QUALIFICATION",
     matchNumber: 0,
     red1: "",
     red2: "",
@@ -223,7 +223,7 @@ export default function CreateEvent({
                           });
                           setNewMatch({
                             eventKey: newEvent.eventKey,
-                            matchLevel: "Qualification",
+                            matchLevel: "QUALIFICATION",
                             matchNumber: 0,
                             red1: "",
                             red2: "",
