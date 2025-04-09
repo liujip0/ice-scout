@@ -8,7 +8,7 @@ export const getFrcEvent = loggedPublicProcedure
   .input(z.string())
   .mutation(async (opts) => {
     const eventRes = await fetch(
-      "https://frc-api.firstinspires.org/v3.0/" +
+      "https://ftc-api.firstinspires.org/v2.0/" +
         opts.input.substring(0, 4) +
         "/events?eventCode=" +
         opts.input.substring(4),
@@ -24,7 +24,7 @@ export const getFrcEvent = loggedPublicProcedure
     );
 
     if (eventRes.status === 200) {
-      const eventBody = JSON.parse(await eventRes.text()).Events[0];
+      const eventBody = JSON.parse(await eventRes.text()).events[0];
       const event: DBEvent & { matches: Match[] } = {
         eventKey: opts.input,
         eventName: eventBody.name,
@@ -32,11 +32,11 @@ export const getFrcEvent = loggedPublicProcedure
       };
 
       const scheduleRes = await fetch(
-        "https://frc-api.firstinspires.org/v3.0/" +
+        "https://ftc-api.firstinspires.org/v2.0/" +
           opts.input.substring(0, 4) +
           "/schedule/" +
           opts.input.substring(4) +
-          "?tournamentLevel=Qualification",
+          "?tournamentLevel=qual",
         {
           method: "GET",
           headers: {
@@ -49,7 +49,8 @@ export const getFrcEvent = loggedPublicProcedure
       );
 
       if (scheduleRes.status === 200) {
-        const scheduleBody = JSON.parse(await scheduleRes.text()).Schedule;
+        console.log(await scheduleRes.text());
+        const scheduleBody = JSON.parse(await scheduleRes.text()).schedule;
         scheduleBody.forEach(
           (match: {
             description: string;
