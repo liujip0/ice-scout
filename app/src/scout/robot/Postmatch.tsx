@@ -4,13 +4,8 @@ import { Divider, Stack, TextField } from "@mui/material";
 type PostmatchProps = {
   match: TeamMatchEntry;
   setMatch: (value: TeamMatchEntry) => void;
-  dataConfidenceError: string;
 };
-export default function Postmatch({
-  match,
-  setMatch,
-  dataConfidenceError,
-}: PostmatchProps) {
+export default function Postmatch({ match, setMatch }: PostmatchProps) {
   return (
     <Stack
       direction="row"

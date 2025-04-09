@@ -386,7 +386,7 @@ export default function ScoutLayout({
                       noShowTeamMatchEntry(match as TeamMatchEntry),
                     ]);
                   } else {
-                    putEntries.mutate(match);
+                    putEntries.mutate([match]);
                   }
                 }}>
                 Submit
@@ -401,7 +401,7 @@ export default function ScoutLayout({
                 setMatch(noShowTeamMatchEntry(match));
                 putEntries.mutate([noShowTeamMatchEntry(match)]);
               } else {
-                putEntries.mutate(match);
+                putEntries.mutate([match]);
               }
             }}>
             Submit
@@ -436,7 +436,6 @@ export default function ScoutLayout({
                 <Auto
                   match={match as TeamMatchEntry}
                   setMatch={setMatch}
-                  deviceSetup={deviceSetup}
                   eventEmitter={eventEmitter}
                 />
               ),
