@@ -17,7 +17,7 @@
     "@mui/icons-material": "^6.4.10",
     "@mui/lab": "6.0.0-beta.15",
     "@mui/material": "^6.4.10",
-    "@tanstack/react-query": "^5.71.3",
+    "@tanstack/react-query": "^5.72.1",
     "@trpc/client": "11.0.0-rc.608",
     "@trpc/react-query": "11.0.0-rc.608",
     "@trpc/server": "11.0.0-rc.608",
@@ -26,27 +26,27 @@
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.4.1"
+    "react-router-dom": "^7.5.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.23.0",
+    "@eslint/js": "^9.24.0",
     "@ice-scout/api": "workspace:*",
-    "@types/node": "^22.13.17",
+    "@types/node": "^22.14.0",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
-    "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@typescript-eslint/parser": "^8.29.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-plugin-import": "^1.13.8",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "typescript": "~5.6.3",
-    "typescript-eslint": "^8.29.0",
-    "vite": "^5.4.16",
+    "typescript-eslint": "^8.29.1",
+    "vite": "^5.4.17",
     "vite-plugin-pwa": "^0.20.5",
     "workbox-window": "^7.3.0",
-    "wrangler": "^4.6.0"
+    "wrangler": "^4.9.1"
   }
 }
