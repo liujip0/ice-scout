@@ -117,11 +117,11 @@ export const updateScheduleFromTba = async (
         event.matches.push({
           eventKey: match.event_key,
           matchLevel: {
-            qm: "Qualification",
-            ef: "Playoff",
-            qf: "Playoff",
-            sf: "Playoff",
-            f: "Playoff",
+            qm: "QUALIFICATION",
+            ef: "PLAYOFF",
+            qf: "PLAYOFF",
+            sf: "PLAYOFF",
+            f: "PLAYOFF",
           }[match.comp_level] as (typeof MatchLevel)[number],
           matchNumber: match.match_number,
           red1: parseInt(match.alliances.red.team_keys[0].replace("frc", "")),
@@ -136,7 +136,7 @@ export const updateScheduleFromTba = async (
           env.DB.prepare(
             `REPLACE INTO
             Matches(eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
+            VALUES (?, ?, ?, ?, ?, ?, ?);`
           ).bind(
             match.eventKey,
             match.matchLevel,

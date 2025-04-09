@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS TeamMatchEntry;
 
 CREATE TABLE IF NOT EXISTS TeamMatchEntry(
   eventKey text NOT NULL,
-  matchLevel text CHECK(matchLevel IN ('None', 'Practice', 'Qualification', 'Playoff')) NOT NULL,
+  matchLevel text CHECK(matchLevel IN ('QUALIFICATION', 'PLAYOFF')) NOT NULL,
   matchNumber integer NOT NULL,
   teamNumber integer NOT NULL,
   alliance text CHECK(alliance IN ('Red', 'Blue')) NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Events(
 
 CREATE TABLE IF NOT EXISTS Matches(
   eventKey text NOT NULL,
-  matchLevel text CHECK(matchLevel IN ('None', 'Practice', 'Qualification', 'Playoff')) NOT NULL,
+  matchLevel text CHECK(matchLevel IN ('QUALIFICATION', 'PLAYOFF')) NOT NULL,
   matchNumber integer NOT NULL,
   red1 integer NOT NULL,
   red2 integer NOT NULL,

@@ -1,21 +1,11 @@
 import { z } from "zod";
 
 export const Alliance = ["Red", "Blue"] as const;
-export const MatchLevel = [
-  "None",
-  "Practice",
-  "Qualification",
-  "Playoff",
-] as const;
+export const MatchLevel = ["QUALIFICATION", "PLAYOFF"] as const;
 
 export const CommonEntrySchema = z.object({
   eventKey: z.string(),
-  matchLevel: z.union([
-    z.literal("None"),
-    z.literal("Practice"),
-    z.literal("Qualification"),
-    z.literal("Playoff"),
-  ]),
+  matchLevel: z.union([z.literal("QUALIFICATION"), z.literal("PLAYOFF")]),
   matchNumber: z.number().int().nonnegative(),
   teamNumber: z.number().int().nonnegative(),
   alliance: z.union([z.literal("Red"), z.literal("Blue")]),
@@ -100,7 +90,7 @@ export const TeamMatchEntryColumns: TeamMatchEntryColumn[] = [
 ] as TeamMatchEntryColumn[];
 export const TeamMatchEntryInit: TeamMatchEntry = {
   eventKey: "",
-  matchLevel: "Qualification",
+  matchLevel: "QUALIFICATION",
   matchNumber: 1,
   teamNumber: 0,
   alliance: "Red",
@@ -136,7 +126,7 @@ export const TeamMatchEntryInit: TeamMatchEntry = {
 };
 export const TeamMatchEntryNoShowInit: TeamMatchEntry = {
   eventKey: "",
-  matchLevel: "Qualification",
+  matchLevel: "QUALIFICATION",
   matchNumber: 1,
   teamNumber: 0,
   alliance: "Red",
@@ -209,12 +199,7 @@ export const DBEventColumns: DBEventColumn[] = ["eventKey", "eventName"];
 
 export const MatchSchema = z.object({
   eventKey: z.string(),
-  matchLevel: z.union([
-    z.literal("None"),
-    z.literal("Practice"),
-    z.literal("Qualification"),
-    z.literal("Playoff"),
-  ]),
+  matchLevel: z.union([z.literal("QUALIFICATION"), z.literal("PLAYOFF")]),
   matchNumber: z.number().int().nonnegative(),
   red1: z.number().int().nonnegative(),
   red2: z.number().int().nonnegative(),

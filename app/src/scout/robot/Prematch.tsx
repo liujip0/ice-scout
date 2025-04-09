@@ -118,10 +118,8 @@ export default function Prematch({
             sx={{
               width: "5em",
             }}>
-            <MenuItem value="None">n</MenuItem>
-            <MenuItem value="Practice">p</MenuItem>
-            <MenuItem value="Qualification">q</MenuItem>
-            <MenuItem value="Playoff">t</MenuItem>
+            <MenuItem value="QUALIFICATION">q</MenuItem>
+            <MenuItem value="PLAYOFF">t</MenuItem>
           </TextField>
           <TextField
             value={isNaN(match.matchNumber) ? "" : match.matchNumber}

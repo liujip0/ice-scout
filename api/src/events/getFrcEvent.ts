@@ -49,15 +49,15 @@ export const getFrcEvent = loggedPublicProcedure
       );
 
       if (scheduleRes.status === 200) {
-        console.log(await scheduleRes.text());
         const scheduleBody = JSON.parse(await scheduleRes.text()).schedule;
+        console.log(scheduleBody);
         scheduleBody.forEach(
           (match: {
             description: string;
             startTime: string;
             matchNumber: number;
             field: string;
-            tournamentLevel: "Qualification" | "Playoff" | "Practice" | "None";
+            tournamentLevel: "QUALIFICATION" | "PLAYOFF";
             teams: {
               teamNumber: number;
               station: "Red1" | "Red2" | "Blue1" | "Blue2";
@@ -90,14 +90,14 @@ export const getFrcEvent = loggedPublicProcedure
         boundStmts.push(
           opts.ctx.env.DB.prepare(
             `REPLACE INTO
-            Events(eventKey, eventName)
-          VALUES (?, ?);`
+              Events(eventKey, eventName)
+            VALUES (?, ?);`
           ).bind(event.eventKey, event.eventName)
         );
         const matchStmt = opts.ctx.env.DB.prepare(
           `REPLACE INTO
             Matches(eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
+          VALUES (?, ?, ?, ?, ?, ?, ?);`
         );
         event.matches.forEach((match) => {
           boundStmts.push(

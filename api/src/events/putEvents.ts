@@ -42,7 +42,7 @@ export const putEvents = loggedPublicProcedure
     const matchStmt = opts.ctx.env.DB.prepare(
       `REPLACE INTO
         Matches(eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
+      VALUES (?, ?, ?, ?, ?, ?, ?);`
     );
     matches.forEach((match) => {
       boundStmts.push(
