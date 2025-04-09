@@ -1,7 +1,4 @@
-import {
-  HumanPlayerEntryColumns,
-  TeamMatchEntryColumns,
-} from "@ice-scout/api/src/utils/dbtypes.ts";
+import { TeamMatchEntryColumns } from "@ice-scout/api/src/utils/dbtypes.ts";
 import { Box, Stack, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { Link, Route, Routes, useResolvedPath } from "react-router-dom";
@@ -39,23 +36,6 @@ export default function Export() {
           ].includes(TeamMatchEntryColumns[i])
       )
   );
-  const [humanColumns, setHumanColumns] = useState<boolean[]>(
-    new Array(HumanPlayerEntryColumns.length)
-      .fill(false)
-      .map(
-        (_, i) =>
-          ![
-            "deviceTeamNumber",
-            "deviceId",
-            "scoutName",
-            "scoutTeamNumber",
-            "eventKey",
-            "matchLevel",
-            "alliance",
-            "robotNumber",
-          ].includes(HumanPlayerEntryColumns[i])
-      )
-  );
 
   return (
     <Stack
@@ -79,15 +59,6 @@ export default function Export() {
               "/robots"
             }
           />
-          <Tab
-            label="Human Data"
-            value="humans"
-            component={Link}
-            to={
-              resolvedPath.pathname.split("/").slice(0, -1).join("/") +
-              "/humans"
-            }
-          />
         </Tabs>
       </Box>
       <Box
@@ -109,32 +80,7 @@ export default function Export() {
                 publicApiToken={publicApiToken.data}
                 robotColumnsState={robotColumns}
                 setRobotColumnsState={setRobotColumns}
-                humanColumnsState={[]}
-                setHumanColumnsState={setHumanColumns}
                 linkBase="/public/robots/"
-                events={events}
-                setEvents={setEvents}
-                teams={teams}
-                setTeams={setTeams}
-              />
-            }
-          />
-          <Route
-            path="humans"
-            element={
-              <ExportLayout
-                showPublicApiToken={showPublicApiToken}
-                setShowPublicApiToken={setShowPublicApiToken}
-                linkIncludesToken={linkIncludesToken}
-                setLinkIncludesToken={setLinkIncludesToken}
-                showAuthorization={showAuthorization}
-                setShowAuthorization={setShowAuthorization}
-                publicApiToken={publicApiToken.data}
-                robotColumnsState={[]}
-                setRobotColumnsState={setRobotColumns}
-                humanColumnsState={humanColumns}
-                setHumanColumnsState={setHumanColumns}
-                linkBase="/public/humans/"
                 events={events}
                 setEvents={setEvents}
                 teams={teams}

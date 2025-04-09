@@ -59,7 +59,7 @@ export const getFrcEvent = loggedPublicProcedure
             tournamentLevel: "Qualification" | "Playoff" | "Practice" | "None";
             teams: {
               teamNumber: number;
-              station: "Red1" | "Red2" | "Red3" | "Blue1" | "Blue2" | "Blue3";
+              station: "Red1" | "Red2" | "Blue1" | "Blue2";
               surrogate: boolean;
             }[];
           }) => {
@@ -69,20 +69,16 @@ export const getFrcEvent = loggedPublicProcedure
               matchNumber: match.matchNumber,
               red1: 0,
               red2: 0,
-              red3: 0,
               blue1: 0,
               blue2: 0,
-              blue3: 0,
             };
             match.teams.forEach((team) => {
               newMatch[
                 team.station.toLowerCase() as
                   | "red1"
                   | "red2"
-                  | "red3"
                   | "blue1"
                   | "blue2"
-                  | "blue3"
               ] = team.teamNumber;
             });
             event.matches.push(newMatch);
@@ -99,7 +95,7 @@ export const getFrcEvent = loggedPublicProcedure
         );
         const matchStmt = opts.ctx.env.DB.prepare(
           `REPLACE INTO
-            Matches(eventKey, matchLevel, matchNumber, red1, red2, red3, blue1, blue2, blue3)
+            Matches(eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
         );
         event.matches.forEach((match) => {
@@ -110,10 +106,8 @@ export const getFrcEvent = loggedPublicProcedure
               match.matchNumber,
               match.red1,
               match.red2,
-              match.red3,
               match.blue1,
-              match.blue2,
-              match.blue3
+              match.blue2
             )
           );
         });

@@ -1,4 +1,4 @@
-import { HumanPlayerEntry, MatchLevel, TeamMatchEntry } from "./dbtypes.ts";
+import { MatchLevel, TeamMatchEntry } from "./dbtypes.ts";
 
 export type Overwrite<T, NewT> = Omit<T, keyof NewT> & NewT;
 
@@ -23,7 +23,7 @@ export function matchLevelAbbrev(matchLevel: (typeof MatchLevel)[number]) {
   }
 }
 
-export function matchFileName(match: TeamMatchEntry | HumanPlayerEntry) {
+export function matchFileName(match: TeamMatchEntry) {
   return (
     "ISA_" +
     match.eventKey +

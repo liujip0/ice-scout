@@ -1,8 +1,5 @@
 import {
   CommonEntryColumns,
-  HumanPlayerEntry,
-  HumanPlayerEntryColumn,
-  HumanPlayerEntryColumns,
   TeamMatchEntry,
   TeamMatchEntryColumn,
   TeamMatchEntryColumns,
@@ -85,7 +82,7 @@ export default function Upload() {
           accept="text/plain"
           onChange={async (event) => {
             if (event.currentTarget.files) {
-              const matches: (TeamMatchEntry | HumanPlayerEntry)[] = [];
+              const matches: TeamMatchEntry[] = [];
 
               for (const file of event.currentTarget.files) {
                 const match = JSON.parse(await file.text());
@@ -142,30 +139,21 @@ export default function Upload() {
               const matchArrs: string[] = qrData
                 .split(QRCODE_UPLOAD_DELIMITER)
                 .filter((x) => x.trim() !== "");
-              const matches: (TeamMatchEntry | HumanPlayerEntry)[] =
-                matchArrs.map((match) => {
-                  const matchArr = JSON.parse(match);
-                  const parsedMatch: Partial<
-                    Record<
-                      TeamMatchEntryColumn | HumanPlayerEntryColumn,
-                      unknown
-                    >
-                  > = {};
-                  CommonEntryColumns.forEach((column, columnIndex) => {
-                    parsedMatch[column] = matchArr[columnIndex];
-                  });
-                  if (parsedMatch.robotNumber === 4) {
-                    HumanPlayerEntryColumns.forEach((column, columnIndex) => {
-                      parsedMatch[column] = matchArr[columnIndex];
-                    });
-                  } else {
-                    TeamMatchEntryColumns.forEach((column, columnIndex) => {
-                      parsedMatch[column] = matchArr[columnIndex];
-                    });
-                  }
-                  console.log(parsedMatch);
-                  return parsedMatch as TeamMatchEntry | HumanPlayerEntry;
+              const matches: TeamMatchEntry[] = matchArrs.map((match) => {
+                const matchArr = JSON.parse(match);
+                const parsedMatch: Partial<
+                  Record<TeamMatchEntryColumn, unknown>
+                > = {};
+                CommonEntryColumns.forEach((column, columnIndex) => {
+                  parsedMatch[column] = matchArr[columnIndex];
                 });
+                TeamMatchEntryColumns.forEach((column, columnIndex) => {
+                  parsedMatch[column] = matchArr[columnIndex];
+                });
+
+                console.log(parsedMatch);
+                return parsedMatch as TeamMatchEntry;
+              });
               putEntries.mutate(matches);
               setQrData("");
               setQrUpload(false);

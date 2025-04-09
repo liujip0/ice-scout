@@ -135,11 +135,7 @@ export default function View({ logoutFunction }: ViewProps) {
               {TeamMatchEntryColumns.map((column) => (
                 <Th
                   key={column}
-                  thickRightBorder={
-                    column === "flag" ||
-                    column === "comments" ||
-                    column === "autoNet"
-                  }>
+                  thickRightBorder={column === "flag" || column === "comments"}>
                   {column}
                 </Th>
               ))}
@@ -203,9 +199,7 @@ export default function View({ logoutFunction }: ViewProps) {
                     <Td
                       key={column}
                       thickRightBorder={
-                        column === "flag" ||
-                        column === "comments" ||
-                        column === "autoNet"
+                        column === "flag" || column === "comments"
                       }>
                       <Typography>
                         {teamMatchEntry[column as TeamMatchEntryColumn]}

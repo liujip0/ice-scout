@@ -7,7 +7,6 @@ import {
   TeamMatchEntryColumns,
 } from "../utils/dbtypes.ts";
 
-//TODO: update to account for HumanPlayerEntries
 export const data = authedLoggedProcedure
   .input(
     z.object({

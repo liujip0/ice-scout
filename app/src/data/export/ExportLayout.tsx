@@ -1,6 +1,4 @@
 import {
-  HumanPlayerEntryColumns,
-  HumanPlayerEntryInit,
   TeamMatchEntryColumns,
   TeamMatchEntryInit,
 } from "@ice-scout/api/src/utils/dbtypes.ts";
@@ -53,8 +51,6 @@ type ExportLayoutProps = {
   publicApiToken: string | undefined;
   robotColumnsState: boolean[];
   setRobotColumnsState: (value: boolean[]) => void;
-  humanColumnsState: boolean[];
-  setHumanColumnsState: (value: boolean[]) => void;
   linkBase: string;
   events: string;
   setEvents: (value: string) => void;
@@ -71,8 +67,6 @@ export default function ExportLayout({
   publicApiToken,
   robotColumnsState,
   setRobotColumnsState,
-  humanColumnsState,
-  setHumanColumnsState,
   linkBase,
   events,
   setEvents,
@@ -89,9 +83,6 @@ export default function ExportLayout({
       "?include=" +
       (robotColumnsState.length > 0 ?
         robotColumnsState.map((value) => (value ? "1" : "0")).join("")
-      : "") +
-      (humanColumnsState.length > 0 ?
-        humanColumnsState.map((value) => (value ? "1" : "0")).join("")
       : "") +
       (events ?
         events
@@ -207,72 +198,6 @@ export default function ExportLayout({
                   />
                 );
               })}
-            </Stack>
-          </>
-        )}
-        {humanColumnsState.length > 0 && (
-          <>
-            <Typography
-              variant="body1"
-              fontWeight="bold"
-              sx={{
-                textWrap: "wrap",
-              }}>
-              Select columns to include in human data
-            </Typography>
-            <Stack
-              sx={{
-                flex: 1,
-                height: 1,
-                overflowY: "scroll",
-              }}>
-              {HumanPlayerEntryColumns.map((column, columnIndex) => (
-                <FormControlLabel
-                  key={column}
-                  checked={humanColumnsState[columnIndex]}
-                  onChange={(_event, checked) => {
-                    setHumanColumnsState(
-                      humanColumnsState.map((value, valueIndex) =>
-                        valueIndex === columnIndex ? checked : value
-                      )
-                    );
-                  }}
-                  control={<Checkbox />}
-                  label={
-                    <Stack
-                      direction="row"
-                      sx={{
-                        alignItems: "center",
-                      }}
-                      gap={1}>
-                      <Typography>{column}</Typography>
-                      {
-                        {
-                          boolean: <DataTypeIcon dataType="boolean" />,
-                          string:
-                            column === "alliance" ?
-                              <DataTypeIcon dataType='"Red" | "Blue"' />
-                            : column === "matchLevel" ?
-                              <DataTypeIcon dataType='"None" | "Practice" | "Qualification" | "Playoff"' />
-                            : <DataTypeIcon dataType="string" />,
-                          number:
-                            column === "robotNumber" ?
-                              <DataTypeIcon dataType="4" />
-                            : <DataTypeIcon dataType="integer" />,
-                          bigint: <DataTypeIcon dataType="error" />,
-                          symbol: <DataTypeIcon dataType="error" />,
-                          function: <DataTypeIcon dataType="error" />,
-                          object:
-                            ["tbaMaxAlgaeAttempts"].includes(column) ?
-                              <DataTypeIcon dataType="integer" />
-                            : <DataTypeIcon dataType="error" />,
-                          undefined: <DataTypeIcon dataType="error" />,
-                        }[typeof HumanPlayerEntryInit[column]]
-                      }
-                    </Stack>
-                  }
-                />
-              ))}
             </Stack>
           </>
         )}

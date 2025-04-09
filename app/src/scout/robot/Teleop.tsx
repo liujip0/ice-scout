@@ -1,10 +1,10 @@
 import { TeamMatchEntry } from "@ice-scout/api/src/utils/dbtypes.ts";
-import { Box, Divider, Stack, ToggleButtonGroup } from "@mui/material";
+import { Divider, Stack, ToggleButtonGroup } from "@mui/material";
 import {
   StyledRedToggleButton,
   StyledToggleButton,
 } from "../../components/StyledToggleButton.tsx";
-import { Counter } from "../Components.tsx";
+import { BigCounter } from "../Components.tsx";
 
 type TeleopProps = {
   match: TeamMatchEntry;
@@ -19,453 +19,181 @@ export function Teleop({ match, setMatch }: TeleopProps) {
         height: 1,
       }}>
       <Stack
-        direction="row"
         sx={{
-          flex: 2,
-          padding: 2,
-        }}>
-        <Stack
-          sx={{
-            width: "40%",
-            height: 1,
-            alignItems: "center",
-          }}>
-          <Box
-            sx={{
-              height: "100%",
-              padding: 1,
-            }}>
-            <Box
-              sx={{
-                aspectRatio: "1015 / 3069",
-                maxHeight: "100%",
-                maxWidth: "100%",
-                position: "relative",
-              }}>
-              <img
-                src={"/Branch.png"}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
-              <Box
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "0%",
-                  left: "0%",
-                  width: "100%",
-                  height: "30%",
-                  borderWidth: 1,
-                  borderStyle: "solid",
-                  borderColor: "primary.main",
-                  backgroundColor: theme.palette.primary.main + "20",
-                })}
-                onClick={() => {
-                  if (match.teleopL4! < 12) {
-                    setMatch({
-                      ...match,
-                      teleopL4: match.teleopL4! + 1,
-                    });
-                  }
-                }}
-              />
-              <Counter
-                value={match.teleopL4!}
-                setValue={(value) => {
-                  setMatch({
-                    ...match,
-                    teleopL4: value,
-                  });
-                }}
-                sx={{
-                  position: "absolute",
-                  left: "0%",
-                  bottom: "70%",
-                }}
-              />
-              <Box
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "30%",
-                  left: "0%",
-                  width: "100%",
-                  height: "20%",
-                  borderWidth: 1,
-                  borderStyle: "solid",
-                  borderColor: "primary.main",
-                  backgroundColor: theme.palette.primary.main + "20",
-                })}
-                onClick={() => {
-                  if (match.teleopL3! < 12) {
-                    setMatch({
-                      ...match,
-                      teleopL3: match.teleopL3! + 1,
-                    });
-                  }
-                }}
-              />
-              <Counter
-                value={match.teleopL3!}
-                setValue={(value) => {
-                  setMatch({
-                    ...match,
-                    teleopL3: value,
-                  });
-                }}
-                sx={{
-                  position: "absolute",
-                  left: "0%",
-                  bottom: "50%",
-                }}
-              />
-              <Box
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "50%",
-                  left: "0%",
-                  width: "100%",
-                  height: "20%",
-                  borderWidth: 1,
-                  borderStyle: "solid",
-                  borderColor: "primary.main",
-                  backgroundColor: theme.palette.primary.main + "20",
-                })}
-                onClick={() => {
-                  if (match.teleopL2! < 12) {
-                    setMatch({
-                      ...match,
-                      teleopL2: match.teleopL2! + 1,
-                    });
-                  }
-                }}
-              />
-              <Counter
-                value={match.teleopL2!}
-                setValue={(value) => {
-                  setMatch({
-                    ...match,
-                    teleopL2: value,
-                  });
-                }}
-                sx={{
-                  position: "absolute",
-                  left: "0%",
-                  bottom: "30%",
-                }}
-              />
-              <Box
-                sx={(theme) => ({
-                  position: "absolute",
-                  top: "70%",
-                  left: "0%",
-                  width: "100%",
-                  height: "30%",
-                  borderWidth: 1,
-                  borderStyle: "solid",
-                  borderColor: "primary.main",
-                  backgroundColor: theme.palette.primary.main + "20",
-                })}
-                onClick={() => {
-                  if (match.teleopL1! < 12) {
-                    setMatch({
-                      ...match,
-                      teleopL1: match.teleopL1! + 1,
-                    });
-                  }
-                }}
-              />
-              <Counter
-                value={match.teleopL1!}
-                setValue={(value) => {
-                  setMatch({
-                    ...match,
-                    teleopL1: value,
-                  });
-                }}
-                sx={{
-                  position: "absolute",
-                  left: "0%",
-                  bottom: "0%",
-                }}
-              />
-            </Box>
-          </Box>
-        </Stack>
-        <Stack
-          sx={{
-            height: 1,
-            width: "60%",
-            alignItems: "center",
-            padding: 1,
-          }}>
-          <Box
-            sx={{
-              aspectRatio: "1670 / 2881",
-              height: "65%",
-              position: "relative",
-              padding: 1,
-            }}
-            onClick={() => {
-              if (match.teleopNet! < 18) {
-                setMatch({
-                  ...match,
-                  teleopNet: match.teleopNet! + 1,
-                });
-              }
-            }}>
-            <img
-              src={"/Net.png"}
-              style={{
-                height: "100%",
-                width: "100%",
-              }}
-            />
-            <Counter
-              value={match.teleopNet!}
-              setValue={(value) => {
-                setMatch({
-                  ...match,
-                  teleopNet: value,
-                });
-              }}
-              sx={{
-                position: "absolute",
-                left: "0%",
-                bottom: "0%",
-              }}
-            />
-          </Box>
-          <Box
-            sx={{
-              height: "35%",
-              padding: 1,
-            }}>
-            <Box
-              sx={{
-                aspectRatio: "2547 / 2311",
-                maxHeight: "100%",
-                maxWidth: "100%",
-                position: "relative",
-              }}
-              onClick={() => {
-                if (match.teleopProcessor! < 18) {
-                  setMatch({
-                    ...match,
-                    teleopProcessor: match.teleopProcessor! + 1,
-                  });
-                }
-              }}>
-              <img
-                src={"/Processor.png"}
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
-              <Counter
-                value={match.teleopProcessor!}
-                setValue={(value) => {
-                  setMatch({
-                    ...match,
-                    teleopProcessor: value,
-                  });
-                }}
-                sx={{
-                  position: "absolute",
-                  left: "0%",
-                  bottom: "0%",
-                }}
-              />
-            </Box>
-          </Box>
-        </Stack>
-      </Stack>
-      <Divider
-        orientation="vertical"
-        flexItem
-      />
-      <Stack
-        sx={{
-          flex: 2,
+          flex: 1,
           padding: 2,
           overflowY: "scroll",
+        }}
+        gap={2}>
+        <BigCounter
+          value={match.teleopNetZoneSamp!}
+          increment={() => {
+            setMatch({
+              ...match,
+              teleopNetZoneSamp: match.teleopNetZoneSamp! + 1,
+            });
+          }}
+          decrement={() => {
+            setMatch({
+              ...match,
+              teleopNetZoneSamp: match.teleopNetZoneSamp! - 1,
+            });
+          }}
+          label="Net Zone Samples"
+        />
+        <BigCounter
+          value={match.teleopLowBasketSamp!}
+          increment={() => {
+            setMatch({
+              ...match,
+              teleopLowBasketSamp: match.teleopLowBasketSamp! + 1,
+            });
+          }}
+          decrement={() => {
+            setMatch({
+              ...match,
+              teleopLowBasketSamp: match.teleopLowBasketSamp! - 1,
+            });
+          }}
+          label="Low Basket Samples"
+        />
+        <BigCounter
+          value={match.teleopHighBasketSamp!}
+          increment={() => {
+            setMatch({
+              ...match,
+              teleopHighBasketSamp: match.teleopHighBasketSamp! + 1,
+            });
+          }}
+          decrement={() => {
+            setMatch({
+              ...match,
+              teleopHighBasketSamp: match.teleopHighBasketSamp! - 1,
+            });
+          }}
+          label="High Basket Samples"
+        />
+      </Stack>
+      <Divider orientation="vertical" />
+      <Stack
+        sx={{
+          width: "50%",
+          height: "100%",
+          padding: 2,
         }}
         gap={2}>
         <StyledRedToggleButton
           value="Robot Died?"
           selected={match.died!}
-          onChange={() =>
+          onChange={() => {
             setMatch({
               ...match,
               died: !match.died,
-            })
-          }>
+            });
+          }}>
           Robot Died
         </StyledRedToggleButton>
-        <StyledToggleButton
-          value="Removed Algae from Reef?"
-          selected={match.removedAlgaeFromReef!}
-          onChange={() =>
+        <Divider
+          orientation="horizontal"
+          flexItem
+        />
+        <BigCounter
+          value={match.teleopLowChamberSpec!}
+          increment={() => {
             setMatch({
               ...match,
-              removedAlgaeFromReef: !match.removedAlgaeFromReef,
-            })
-          }>
-          Removed Algae from Reef
-        </StyledToggleButton>
-        <StyledToggleButton
-          value="Played Defense?"
-          selected={match.playedDefense!}
-          onChange={() =>
+              teleopLowChamberSpec: match.teleopLowChamberSpec! + 1,
+            });
+          }}
+          decrement={() => {
             setMatch({
               ...match,
-              playedDefense: !match.playedDefense,
-            })
-          }>
-          Played Defense
-        </StyledToggleButton>
-        <Stack
+              teleopLowChamberSpec: match.teleopLowChamberSpec! - 1,
+            });
+          }}
+          label="Low Chamber Specimens"
+        />
+        <BigCounter
+          value={match.teleopHighChamberSpec!}
+          increment={() => {
+            setMatch({
+              ...match,
+              teleopHighChamberSpec: match.teleopHighChamberSpec! + 1,
+            });
+          }}
+          decrement={() => {
+            setMatch({
+              ...match,
+              teleopHighChamberSpec: match.teleopHighChamberSpec! - 1,
+            });
+          }}
+          label="High Chamber Samples"
+        />
+        <Divider
+          orientation="horizontal"
+          flexItem
+        />
+        <ToggleButtonGroup
           sx={{
             width: 1,
           }}>
-          <ToggleButtonGroup
-            sx={{
-              width: 1,
-            }}>
-            <StyledToggleButton
-              value="Attempted Shallow Climb?"
-              selected={match.teleopAttemptedShallow!}
-              onChange={() => {
-                if (!match.teleopAttemptedShallow) {
-                  setMatch({
-                    ...match,
-                    teleopAttemptedShallow: true,
-                    teleopAttemptedDeep: false,
-                    teleopSuccessfulShallow: false,
-                    teleopSuccessfulDeep: false,
-                  });
-                } else {
-                  setMatch({
-                    ...match,
-                    teleopAttemptedShallow: false,
-                    teleopSuccessfulShallow: false,
-                  });
-                }
-              }}
-              sx={{
-                borderBottomLeftRadius: 0,
-                borderBottomWidth: 0,
-                width: 0.5,
-              }}>
-              Attempted Shallow Climb
-            </StyledToggleButton>
-            <StyledToggleButton
-              value="Attempted Deep Climb?"
-              selected={match.teleopAttemptedDeep!}
-              onChange={() => {
-                if (!match.teleopAttemptedDeep) {
-                  setMatch({
-                    ...match,
-                    teleopAttemptedDeep: true,
-                    teleopAttemptedShallow: false,
-                    teleopSuccessfulShallow: false,
-                    teleopSuccessfulDeep: false,
-                  });
-                } else {
-                  setMatch({
-                    ...match,
-                    teleopAttemptedDeep: false,
-                    teleopSuccessfulDeep: false,
-                  });
-                }
-              }}
-              sx={{
-                borderBottomRightRadius: 0,
-                borderBottomWidth: 0,
-                width: 0.5,
-              }}>
-              Attempted Deep Climb
-            </StyledToggleButton>
-          </ToggleButtonGroup>
-          <ToggleButtonGroup
-            sx={{
-              width: 1,
-            }}>
-            <StyledToggleButton
-              value="Successful Shallow Climb?"
-              selected={match.teleopSuccessfulShallow!}
-              onChange={() => {
-                if (!match.teleopSuccessfulShallow) {
-                  setMatch({
-                    ...match,
-                    teleopSuccessfulShallow: true,
-                    teleopAttemptedShallow: true,
-                    teleopAttemptedDeep: false,
-                    teleopSuccessfulDeep: false,
-                    teleopPark: false,
-                  });
-                } else {
-                  setMatch({
-                    ...match,
-                    teleopSuccessfulShallow: false,
-                  });
-                }
-              }}
-              sx={{
-                borderTopLeftRadius: 0,
-                width: 0.5,
-              }}>
-              Successful Shallow Climb
-            </StyledToggleButton>
-            <StyledToggleButton
-              value="Successful Deep Climb?"
-              selected={match.teleopSuccessfulDeep!}
-              onChange={() => {
-                if (!match.teleopSuccessfulDeep) {
-                  setMatch({
-                    ...match,
-                    teleopSuccessfulDeep: true,
-                    teleopAttemptedShallow: false,
-                    teleopAttemptedDeep: true,
-                    teleopSuccessfulShallow: false,
-                    teleopPark: false,
-                  });
-                } else {
-                  setMatch({
-                    ...match,
-                    teleopSuccessfulDeep: false,
-                  });
-                }
-              }}
-              sx={{
-                borderTopRightRadius: 0,
-                width: 0.5,
-              }}>
-              Successful Deep Climb
-            </StyledToggleButton>
-          </ToggleButtonGroup>
-        </Stack>
-        <StyledToggleButton
-          value="Parked?"
-          selected={match.teleopPark!}
-          onChange={() => {
-            if (!match.teleopPark) {
+          <StyledToggleButton
+            value="Observation Zone Park"
+            selected={match.endgameObservationZone!}
+            onChange={() => {
               setMatch({
                 ...match,
-                teleopPark: !match.teleopPark,
-                teleopSuccessfulShallow: false,
-                teleopSuccessfulDeep: false,
+                endgameObservationZone: !match.endgameObservationZone,
+                endgameL1Climb: false,
+                endgameL2Climb: false,
+                endgameL3Climb: false,
               });
-            } else {
+            }}>
+            Observation Zone Park
+          </StyledToggleButton>
+          <StyledToggleButton
+            value="L1 Ascent"
+            selected={match.endgameL1Climb!}
+            onChange={() => {
               setMatch({
                 ...match,
-                teleopPark: !match.teleopPark,
+                endgameObservationZone: false,
+                endgameL1Climb: !match.endgameL1Climb,
+                endgameL2Climb: false,
+                endgameL3Climb: false,
               });
-            }
-          }}>
-          Parked
-        </StyledToggleButton>
+            }}>
+            L1 Ascent
+          </StyledToggleButton>
+          <StyledToggleButton
+            value="L2 Ascent"
+            selected={match.endgameL2Climb!}
+            onChange={() => {
+              setMatch({
+                ...match,
+                endgameObservationZone: false,
+                endgameL1Climb: false,
+                endgameL2Climb: !match.endgameL2Climb,
+                endgameL3Climb: false,
+              });
+            }}>
+            L2 Ascent
+          </StyledToggleButton>
+          <StyledToggleButton
+            value="L3 Ascent"
+            selected={match.endgameL3Climb!}
+            onChange={() => {
+              setMatch({
+                ...match,
+                endgameObservationZone: false,
+                endgameL1Climb: false,
+                endgameL2Climb: false,
+                endgameL3Climb: !match.endgameL3Climb,
+              });
+            }}>
+            L3 Ascent
+          </StyledToggleButton>
+        </ToggleButtonGroup>
       </Stack>
     </Stack>
   );

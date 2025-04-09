@@ -55,13 +55,9 @@ export default function ExportEvent({
           "," +
           match.red2 +
           "," +
-          match.red3 +
-          "," +
           match.blue1 +
           "," +
           match.blue2 +
-          "," +
-          match.blue3 +
           "\n";
       });
 
@@ -153,13 +149,9 @@ export default function ExportEvent({
                       "," +
                       match.red2 +
                       "," +
-                      match.red3 +
-                      "," +
                       match.blue1 +
                       "," +
                       match.blue2 +
-                      "," +
-                      match.blue3 +
                       "\n";
                   });
 

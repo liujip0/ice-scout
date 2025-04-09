@@ -1,9 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { authedLoggedProcedure } from "../trpc.ts";
 import {
-  HumanPlayerEntry,
-  HumanPlayerEntryColumns,
-  HumanPlayerEntryInit,
   TeamMatchEntry,
   TeamMatchEntryColumns,
   TeamMatchEntryInit,
@@ -20,16 +17,12 @@ export const exportData = authedLoggedProcedure.query(async (opts) => {
   const teamMatchEntries = await opts.ctx.env.DB.prepare(
     "SELECT * FROM TeamMatchEntry;"
   ).all();
-  const humanPlayerEntries = await opts.ctx.env.DB.prepare(
-    "SELECT * FROM HumanPlayerEntry;"
-  ).all();
   const users = await opts.ctx.env.DB.prepare("SELECT * FROM Users;").all();
   const events = await opts.ctx.env.DB.prepare("SELECT * FROM Events;").all();
   const matches = await opts.ctx.env.DB.prepare("SELECT * FROM Matches;").all();
 
   if (
     teamMatchEntries.success &&
-    humanPlayerEntries.success &&
     users.success &&
     events.success &&
     matches.success
@@ -49,19 +42,6 @@ export const exportData = authedLoggedProcedure.query(async (opts) => {
               "tbaEndgameDeep",
             ].includes(column)
           ) {
-            newEntry[column] = (entry[column] === 1) as never;
-          } else {
-            newEntry[column] = entry[column] as never;
-          }
-        });
-        return newEntry;
-      }),
-      HumanPlayerEntry: humanPlayerEntries.results.map((entry) => {
-        const newEntry: HumanPlayerEntry = { ...HumanPlayerEntryInit };
-        HumanPlayerEntryColumns.forEach((column) => {
-          if (entry[column] === null) {
-            newEntry[column] = entry[column] as never;
-          } else if (typeof HumanPlayerEntryInit[column] === "boolean") {
             newEntry[column] = (entry[column] === 1) as never;
           } else {
             newEntry[column] = entry[column] as never;

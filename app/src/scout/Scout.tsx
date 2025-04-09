@@ -2,8 +2,6 @@ import { MAX_TEAM_NUMBER } from "@ice-scout/api/src/utils/constants.ts";
 import {
   Alliance,
   DBEvent,
-  HumanPlayerEntry,
-  HumanPlayerEntryInit,
   Match,
   TeamMatchEntry,
   TeamMatchEntryInit,
@@ -46,55 +44,42 @@ export default function Scout({
     }
   }, [deviceSetup, navigate]);
 
-  const [match, setMatch] = useState<TeamMatchEntry | HumanPlayerEntry>(() => {
-    if (deviceSetup.robotNumber < 4) {
-      const newMatch: TeamMatchEntry = {
-        ...TeamMatchEntryInit,
-        eventKey: deviceSetup.currentEvent,
-        alliance: deviceSetup.alliance,
-        robotNumber: deviceSetup.robotNumber as 1 | 2 | 3,
-        deviceTeamNumber: deviceSetup.deviceTeamNumber,
-        deviceId: deviceSetup.deviceId,
-      };
+  const [match, setMatch] = useState<TeamMatchEntry>(() => {
+    const newMatch: TeamMatchEntry = {
+      ...TeamMatchEntryInit,
+      eventKey: deviceSetup.currentEvent,
+      alliance: deviceSetup.alliance,
+      robotNumber: deviceSetup.robotNumber as 1 | 2,
+      deviceTeamNumber: deviceSetup.deviceTeamNumber,
+      deviceId: deviceSetup.deviceId,
+    };
 
-      const eventMatches = events.find(
-        (event) => event.eventKey === deviceSetup.currentEvent
-      )?.matches;
-      if (
-        eventMatches?.some(
+    const eventMatches = events.find(
+      (event) => event.eventKey === deviceSetup.currentEvent
+    )?.matches;
+    if (
+      eventMatches?.some(
+        (x) =>
+          x.matchLevel === TeamMatchEntryInit.matchLevel &&
+          x.matchNumber === TeamMatchEntryInit.matchNumber
+      )
+    ) {
+      return {
+        ...newMatch,
+        teamNumber: eventMatches.find(
           (x) =>
             x.matchLevel === TeamMatchEntryInit.matchLevel &&
             x.matchNumber === TeamMatchEntryInit.matchNumber
-        )
-      ) {
-        return {
-          ...newMatch,
-          teamNumber: eventMatches.find(
-            (x) =>
-              x.matchLevel === TeamMatchEntryInit.matchLevel &&
-              x.matchNumber === TeamMatchEntryInit.matchNumber
-          )![
-            (deviceSetup.alliance.toLowerCase() + deviceSetup.robotNumber) as
-              | "red1"
-              | "red2"
-              | "red3"
-              | "blue1"
-              | "blue2"
-              | "blue3"
-          ],
-        };
-      } else {
-        return newMatch;
-      }
-    } else {
-      return {
-        ...HumanPlayerEntryInit,
-        eventKey: deviceSetup.currentEvent,
-        alliance: deviceSetup.alliance,
-        robotNumber: deviceSetup.robotNumber as 4,
-        deviceTeamNumber: deviceSetup.deviceTeamNumber,
-        deviceId: deviceSetup.deviceId,
+        )![
+          (deviceSetup.alliance.toLowerCase() + deviceSetup.robotNumber) as
+            | "red1"
+            | "red2"
+            | "blue1"
+            | "blue2"
+        ],
       };
+    } else {
+      return newMatch;
     }
   });
   useEffect(() => {
@@ -122,10 +107,8 @@ export default function Scout({
                 (match.alliance.toLowerCase() + match.robotNumber) as
                   | "red1"
                   | "red2"
-                  | "red3"
                   | "blue1"
                   | "blue2"
-                  | "blue3"
               ],
             });
           }

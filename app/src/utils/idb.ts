@@ -1,6 +1,5 @@
 import {
   DBEvent,
-  HumanPlayerEntry,
   Match,
   MatchLevel,
   TeamMatchEntry,
@@ -15,7 +14,6 @@ export enum Stores {
   Events = "DBEvents",
   Matches = "Matches",
   TeamMatchEntry = "TeamMatchEntry",
-  HumanPlayerEntry = "HumanPlayerEntry",
 }
 
 interface ISAIDBSchema extends DBSchema {
@@ -30,17 +28,6 @@ interface ISAIDBSchema extends DBSchema {
   TeamMatchEntry: {
     key: [string, (typeof MatchLevel)[number], number, number, number, string];
     value: TeamMatchEntry & {
-      autoUpload: boolean;
-      quickshare: boolean;
-      clipboard: boolean;
-      qr: boolean;
-      download: boolean;
-      upload: boolean;
-    };
-  };
-  HumanPlayerEntry: {
-    key: [string, (typeof MatchLevel)[number], number, number, number, string];
-    value: HumanPlayerEntry & {
       autoUpload: boolean;
       quickshare: boolean;
       clipboard: boolean;
@@ -78,18 +65,6 @@ export const initDB = async (): Promise<boolean> => {
           ],
         });
       }
-      if (!db.objectStoreNames.contains(Stores.HumanPlayerEntry)) {
-        db.createObjectStore(Stores.HumanPlayerEntry, {
-          keyPath: [
-            "eventKey",
-            "matchLevel",
-            "matchNumber",
-            "teamNumber",
-            "deviceTeamNumber",
-            "deviceId",
-          ],
-        });
-      }
     };
     dbReq.onsuccess = () => {
       resolve(true);
@@ -115,18 +90,6 @@ export const getDBTeamMatchEntries = async () => {
   const res = await db.getAll(Stores.TeamMatchEntry);
   return res;
 };
-export const getDBHumanPlayerEntries = async () => {
-  const db = await openDB<ISAIDBSchema>(dbname, version);
-  const res = await db.getAll(Stores.HumanPlayerEntry);
-  return res.map((entry) =>
-    entry.teamNumber === 0 ?
-      {
-        ...entry,
-        teamNumber: null,
-      }
-    : entry
-  );
-};
 
 export const putDBEvent = async (event: DBEvent) => {
   const db = await openDB<ISAIDBSchema>(dbname, version);
@@ -144,37 +107,17 @@ export const putDBMatches = async (matches: Match[]) => {
 
 export const putDBEntry = async (match: ExportMatchEntry) => {
   const db = await openDB<ISAIDBSchema>(dbname, version);
-  if (match.robotNumber !== 4) {
-    await db.put(Stores.TeamMatchEntry, match);
-  } else {
-    await db.put(Stores.HumanPlayerEntry, {
-      ...match,
-      teamNumber: match.teamNumber || 0,
-    });
-  }
+  await db.put(Stores.TeamMatchEntry, match);
 };
 
-export const deleteEntry = async (
-  match: HumanPlayerEntry | TeamMatchEntry | ExportMatchEntry
-) => {
+export const deleteEntry = async (match: TeamMatchEntry | ExportMatchEntry) => {
   const db = await openDB<ISAIDBSchema>(dbname, version);
-  if (match.robotNumber !== 4) {
-    db.delete(Stores.TeamMatchEntry, [
-      match.eventKey,
-      match.matchLevel,
-      match.matchNumber,
-      match.teamNumber,
-      match.deviceTeamNumber,
-      match.deviceId,
-    ]);
-  } else {
-    db.delete(Stores.HumanPlayerEntry, [
-      match.eventKey,
-      match.matchLevel,
-      match.matchNumber,
-      match.teamNumber || 0,
-      match.deviceTeamNumber,
-      match.deviceId,
-    ]);
-  }
+  db.delete(Stores.TeamMatchEntry, [
+    match.eventKey,
+    match.matchLevel,
+    match.matchNumber,
+    match.teamNumber,
+    match.deviceTeamNumber,
+    match.deviceId,
+  ]);
 };

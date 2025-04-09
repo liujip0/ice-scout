@@ -5,8 +5,6 @@ import { authedLoggedProcedure } from "../trpc.ts";
 import {
   DBEventColumns,
   DBEventSchema,
-  HumanPlayerEntryColumns,
-  HumanPlayerEntrySchema,
   MatchColumns,
   MatchSchema,
   TeamMatchEntryColumns,
@@ -19,7 +17,6 @@ export const importData = authedLoggedProcedure
   .input(
     z.object({
       TeamMatchEntry: z.array(TeamMatchEntrySchema),
-      HumanPlayerEntry: z.array(HumanPlayerEntrySchema),
       Users: z.array(UserSchema),
       Events: z.array(DBEventSchema),
       Matches: z.array(MatchSchema),
@@ -47,22 +44,6 @@ export const importData = authedLoggedProcedure
       boundStmts.push(
         teamMatchEntries.bind(
           ...TeamMatchEntryColumns.map((column) => entry[column])
-        )
-      );
-    });
-
-    const humanPlayerEntries = opts.ctx.env.DB.prepare(
-      `INSERT INTO
-            HumanPlayerEntry(
-              ${HumanPlayerEntryColumns.join(", ")}
-            )
-          VALUES
-            (${new Array(HumanPlayerEntryColumns.length).fill("?").join(",")});`
-    );
-    opts.input.HumanPlayerEntry.forEach((entry) => {
-      boundStmts.push(
-        humanPlayerEntries.bind(
-          ...HumanPlayerEntryColumns.map((column) => entry[column])
         )
       );
     });

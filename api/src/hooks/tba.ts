@@ -2,6 +2,7 @@ import { D1PreparedStatement } from "@cloudflare/workers-types";
 import { updateScheduleFromTba } from "../events/getTbaEvent.ts";
 import { WebhooksOpts } from "./context.ts";
 
+//TODO: change to ftcscout or smth
 type TbaBool = "Yes" | "No";
 type TbaEndGame = "None" | "Parked" | "ShallowCage" | "DeepCage";
 type TbaAllianceScore = {
@@ -76,15 +77,6 @@ export const tba = async (opts: WebhooksOpts): Promise<Response> => {
               AND matchNumber = ?
               AND alliance = ?
               AND robotNumber = ?;`
-        );
-        const updateHumanPlayerEntry = opts.env.DB.prepare(
-          `UPDATE HumanPlayerEntry
-            SET tbaMaxAlgaeAttempts = ?
-            WHERE eventKey = ?
-              AND matchLevel = ?
-              AND matchNumber = ?
-              AND alliance = ?
-              AND robotNumber = 4;`
         );
         const boundStmts: D1PreparedStatement[] = [];
 
@@ -224,36 +216,6 @@ export const tba = async (opts: WebhooksOpts): Promise<Response> => {
             body.message_data.match.match_number,
             "Blue",
             3
-          )
-        );
-        boundStmts.push(
-          updateHumanPlayerEntry.bind(
-            body.message_data.match.score_breakdown.blue.wallAlgaeCount,
-            body.message_data.match.event_key,
-            {
-              qm: "Qualification",
-              ef: "Playoff",
-              qf: "Playoff",
-              sf: "Playoff",
-              f: "Playoff",
-            }[body.message_data.match.comp_level],
-            body.message_data.match.match_number,
-            "Red"
-          )
-        );
-        boundStmts.push(
-          updateHumanPlayerEntry.bind(
-            body.message_data.match.score_breakdown.red.wallAlgaeCount,
-            body.message_data.match.event_key,
-            {
-              qm: "Qualification",
-              ef: "Playoff",
-              qf: "Playoff",
-              sf: "Playoff",
-              f: "Playoff",
-            }[body.message_data.match.comp_level],
-            body.message_data.match.match_number,
-            "Blue"
           )
         );
         await opts.env.DB.batch(boundStmts);

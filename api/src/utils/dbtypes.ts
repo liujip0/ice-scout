@@ -107,7 +107,7 @@ export const TeamMatchEntryInit: TeamMatchEntry = {
   robotNumber: 1,
   deviceTeamNumber: 0,
   deviceId: "",
-  scoutTeamNumber: 0,
+  scoutTeamNumber: 11329,
   scoutName: "",
   flag: "",
 
@@ -143,7 +143,7 @@ export const TeamMatchEntryNoShowInit: TeamMatchEntry = {
   robotNumber: 1,
   deviceTeamNumber: 0,
   deviceId: "",
-  scoutTeamNumber: 0,
+  scoutTeamNumber: 11329,
   scoutName: "",
   flag: "",
 
@@ -169,69 +169,6 @@ export const TeamMatchEntryNoShowInit: TeamMatchEntry = {
   endgameL1Climb: null,
   endgameL2Climb: null,
   endgameL3Climb: null,
-};
-
-export const HumanPlayerEntrySchema = CommonEntrySchema.omit({
-  robotNumber: true,
-  teamNumber: true,
-}).extend({
-  robotNumber: z.literal(4),
-  teamNumber: z.number().int().nonnegative().nullable(),
-
-  tbaMaxAlgaeAttempts: z.number().int().nonnegative().nullable(),
-
-  humanAttemptedNet: z.number().int().nonnegative().nullable(),
-  humanSuccessfulNet: z.number().int().nonnegative().nullable(),
-  comments: z.string().nullable(),
-});
-export type HumanPlayerEntry = z.infer<typeof HumanPlayerEntrySchema>;
-export type HumanPlayerEntryColumn = keyof HumanPlayerEntry;
-export const HumanPlayerEntryColumns: HumanPlayerEntryColumn[] = [
-  ...CommonEntryColumns,
-
-  "tbaMaxAlgaeAttempts",
-
-  "humanAttemptedNet",
-  "humanSuccessfulNet",
-  "comments",
-] as HumanPlayerEntryColumn[];
-export const HumanPlayerEntryInit: HumanPlayerEntry = {
-  eventKey: "",
-  matchLevel: "Qualification",
-  matchNumber: 1,
-  teamNumber: 0,
-  alliance: "Red",
-  robotNumber: 4,
-  deviceTeamNumber: 0,
-  deviceId: "",
-  scoutTeamNumber: 0,
-  scoutName: "",
-  flag: "",
-
-  tbaMaxAlgaeAttempts: null,
-
-  humanAttemptedNet: 0,
-  humanSuccessfulNet: 0,
-  comments: "",
-};
-export const HumanPlayerEntryNoShowInit: HumanPlayerEntry = {
-  eventKey: "",
-  matchLevel: "Qualification",
-  matchNumber: 1,
-  teamNumber: null,
-  alliance: "Red",
-  robotNumber: 4,
-  deviceTeamNumber: 0,
-  deviceId: "",
-  scoutTeamNumber: 0,
-  scoutName: "",
-  flag: "",
-
-  tbaMaxAlgaeAttempts: null,
-
-  humanAttemptedNet: null,
-  humanSuccessfulNet: null,
-  comments: null,
 };
 
 export const UserPermLevel = [
@@ -281,10 +218,8 @@ export const MatchSchema = z.object({
   matchNumber: z.number().int().nonnegative(),
   red1: z.number().int().nonnegative(),
   red2: z.number().int().nonnegative(),
-  red3: z.number().int().nonnegative(),
   blue1: z.number().int().nonnegative(),
   blue2: z.number().int().nonnegative(),
-  blue3: z.number().int().nonnegative(),
 });
 export type Match = z.infer<typeof MatchSchema>;
 export type MatchColumn = keyof Match;
@@ -294,8 +229,6 @@ export const MatchColumns: MatchColumn[] = [
   "matchNumber",
   "red1",
   "red2",
-  "red3",
   "blue1",
   "blue2",
-  "blue3",
 ];

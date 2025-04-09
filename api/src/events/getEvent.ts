@@ -54,7 +54,7 @@ export const getScheduleFromDB = async (
 
   if (event) {
     const matches = await env.DB.prepare(
-      `SELECT eventKey, matchLevel, matchNumber, red1, red2, red3, blue1, blue2, blue3
+      `SELECT eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2
         FROM Matches
         WHERE eventKey = ?;`
     )

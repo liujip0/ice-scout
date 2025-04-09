@@ -63,7 +63,7 @@ export const schedule = async (opts: publicOpts): Promise<Response> => {
       }
       case "csv": {
         let csvContents =
-          "Match Level,Match Number,Red 1,Red 2,Red 3,Blue 1,Blue 2,Blue 3\n";
+          "Match Level,Match Number,Red 1,Red 2,Blue 1,Blue 2\n";
         scheduleData.matches.forEach((match) => {
           csvContents +=
             match.matchLevel +
@@ -74,13 +74,9 @@ export const schedule = async (opts: publicOpts): Promise<Response> => {
             "," +
             match.red2 +
             "," +
-            match.red3 +
-            "," +
             match.blue1 +
             "," +
             match.blue2 +
-            "," +
-            match.blue3 +
             "\n";
         });
         return new Response(csvContents, {

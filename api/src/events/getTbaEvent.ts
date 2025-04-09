@@ -126,10 +126,8 @@ export const updateScheduleFromTba = async (
           matchNumber: match.match_number,
           red1: parseInt(match.alliances.red.team_keys[0].replace("frc", "")),
           red2: parseInt(match.alliances.red.team_keys[1].replace("frc", "")),
-          red3: parseInt(match.alliances.red.team_keys[2].replace("frc", "")),
           blue1: parseInt(match.alliances.blue.team_keys[0].replace("frc", "")),
           blue2: parseInt(match.alliances.blue.team_keys[1].replace("frc", "")),
-          blue3: parseInt(match.alliances.blue.team_keys[2].replace("frc", "")),
         });
       });
 
@@ -137,7 +135,7 @@ export const updateScheduleFromTba = async (
         boundStmts.push(
           env.DB.prepare(
             `REPLACE INTO
-            Matches(eventKey, matchLevel, matchNumber, red1, red2, red3, blue1, blue2, blue3)
+            Matches(eventKey, matchLevel, matchNumber, red1, red2, blue1, blue2)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
           ).bind(
             match.eventKey,
@@ -145,10 +143,8 @@ export const updateScheduleFromTba = async (
             match.matchNumber,
             match.red1,
             match.red2,
-            match.red3,
             match.blue1,
-            match.blue2,
-            match.blue3
+            match.blue2
           )
         );
       });

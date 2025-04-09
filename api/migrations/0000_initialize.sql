@@ -1,5 +1,4 @@
 DROP TABLE IF EXISTS TeamMatchEntry;
-DROP TABLE IF EXISTS HumanPlayerEntry;
 
 CREATE TABLE IF NOT EXISTS TeamMatchEntry(
   eventKey text NOT NULL,

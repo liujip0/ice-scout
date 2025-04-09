@@ -55,10 +55,8 @@ export default function CreateEvent({
       {
         red1: string;
         red2: string;
-        red3: string;
         blue1: string;
         blue2: string;
-        blue3: string;
       }
     >
   >({
@@ -67,10 +65,8 @@ export default function CreateEvent({
     matchNumber: 0,
     red1: "",
     red2: "",
-    red3: "",
     blue1: "",
     blue2: "",
-    blue3: "",
   });
   const setNewEventMatch = (match: Match) => {
     const newMatches = newEvent.matches.filter(
@@ -222,10 +218,8 @@ export default function CreateEvent({
                             ...newMatch,
                             red1: parseInt(newMatch.red1),
                             red2: parseInt(newMatch.red2),
-                            red3: parseInt(newMatch.red3),
                             blue1: parseInt(newMatch.blue1),
                             blue2: parseInt(newMatch.blue2),
-                            blue3: parseInt(newMatch.blue3),
                           });
                           setNewMatch({
                             eventKey: newEvent.eventKey,
@@ -233,10 +227,8 @@ export default function CreateEvent({
                             matchNumber: 0,
                             red1: "",
                             red2: "",
-                            red3: "",
                             blue1: "",
                             blue2: "",
-                            blue3: "",
                           });
                         }}
                         color="primary">

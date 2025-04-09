@@ -339,22 +339,6 @@ export default function DeviceSetup({
                 }}>
                 2
               </StyledToggleButton>
-              <StyledToggleButton
-                value={3}
-                sx={{
-                  flex: 1,
-                  padding: 2,
-                }}>
-                3
-              </StyledToggleButton>
-              <StyledToggleButton
-                value={4}
-                sx={{
-                  flex: 1,
-                  padding: 2,
-                }}>
-                Human
-              </StyledToggleButton>
             </ToggleButtonGroup>
             <FormHelperText
               color="error"
@@ -451,7 +435,7 @@ export default function DeviceSetup({
                           schedule.length < 2 ||
                           schedule.some(
                             (x, index) =>
-                              (index === 0 ? x.length < 2 : x.length < 8) ||
+                              (index === 0 ? x.length < 2 : x.length < 6) ||
                               (index !== 0 &&
                                 !(MatchLevel as readonly string[]).includes(
                                   x[0]
@@ -472,10 +456,8 @@ export default function DeviceSetup({
                             matchNumber: parseInt(x[1]),
                             red1: parseInt(x[2]),
                             red2: parseInt(x[3]),
-                            red3: parseInt(x[4]),
-                            blue1: parseInt(x[5]),
-                            blue2: parseInt(x[6]),
-                            blue3: parseInt(x[7]),
+                            blue1: parseInt(x[4]),
+                            blue2: parseInt(x[5]),
                           })),
                         };
 
