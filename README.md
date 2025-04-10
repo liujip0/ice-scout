@@ -23,7 +23,7 @@ git clone https://github.com/liujip0/scouting.git
 ### 2. Navigate to scouting directory
 
 ```zsh
-cd scouting
+cd ice-scout
 ```
 
 ### 3. Install dependencies
