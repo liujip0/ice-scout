@@ -10,7 +10,7 @@ export const createContext = async ({
 }) => {
   const responseHeaders = resHeaders;
   responseHeaders.set("Access-Control-Allow-Origin", "*");
-  responseHeaders.set("Access-Control-Allow-Headers", "*");
+  responseHeaders.set("Access-Control-Allow-Headers", "Authorization, *");
   return {
     req,
     env,
