@@ -24,7 +24,7 @@ export default function App() {
       localStorage.setItem(
         "deviceSetup",
         JSON.stringify({
-          deviceTeamNumber: 0,
+          deviceTeamNumber: 11329,
           deviceId: "",
           alliance: "Red",
           robotNumber: 1,
@@ -32,7 +32,7 @@ export default function App() {
         } as DeviceSetupObj)
       );
       return {
-        deviceTeamNumber: 0,
+        deviceTeamNumber: 11329,
         deviceId: "",
         alliance: "Red",
         robotNumber: 1,
