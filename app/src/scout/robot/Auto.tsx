@@ -186,7 +186,7 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
               autoHighChamberSpec: match.autoHighChamberSpec! - 1,
             });
           }}
-          label="High Chamber Samples"
+          label="High Chamber Specimens"
         />
         <Divider
           orientation="horizontal"

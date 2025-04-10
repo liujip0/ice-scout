@@ -127,7 +127,7 @@ export function Teleop({ match, setMatch }: TeleopProps) {
               teleopHighChamberSpec: match.teleopHighChamberSpec! - 1,
             });
           }}
-          label="High Chamber Samples"
+          label="High Chamber Specimens"
         />
         <Divider
           orientation="horizontal"
