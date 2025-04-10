@@ -14,10 +14,10 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.2.5",
-    "@mui/icons-material": "^6.4.10",
+    "@mui/icons-material": "^6.4.11",
     "@mui/lab": "6.0.0-beta.15",
-    "@mui/material": "^6.4.10",
-    "@tanstack/react-query": "^5.72.1",
+    "@mui/material": "^6.4.11",
+    "@tanstack/react-query": "^5.72.2",
     "@trpc/client": "11.0.0-rc.608",
     "@trpc/react-query": "11.0.0-rc.608",
     "@trpc/server": "11.0.0-rc.608",
@@ -44,9 +44,9 @@
     "globals": "^15.15.0",
     "typescript": "~5.6.3",
     "typescript-eslint": "^8.29.1",
-    "vite": "^5.4.17",
+    "vite": "^5.4.18",
     "vite-plugin-pwa": "^0.20.5",
     "workbox-window": "^7.3.0",
-    "wrangler": "^4.9.1"
+    "wrangler": "^4.10.0"
   }
 }
