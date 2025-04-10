@@ -1,4 +1,4 @@
-import { D1Database, KVNamespace } from "@cloudflare/workers-types";
+import { D1Database } from "@cloudflare/workers-types";
 import {
   FetchCreateContextFnOptions,
   fetchRequestHandler,
@@ -12,7 +12,6 @@ import { appRouter } from "./router.ts";
 
 export interface Env {
   DB: D1Database;
-  KV: KVNamespace;
 
   ADMIN_ACCOUNT_USERNAME: string;
   ADMIN_ACCOUNT_PASSWORD: string;
