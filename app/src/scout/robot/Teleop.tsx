@@ -13,11 +13,13 @@ type TeleopProps = {
 export function Teleop({ match, setMatch }: TeleopProps) {
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "column", md: "row" }}
       sx={{
-        width: 1,
-        height: 1,
-      }}>
+        height: "auto",
+        width: "100%",
+        overflow: "auto",
+      }}
+    >
       <Stack
         sx={{
           flex: 1,
@@ -25,6 +27,21 @@ export function Teleop({ match, setMatch }: TeleopProps) {
           overflowY: "scroll",
         }}
         gap={2}>
+        <StyledRedToggleButton
+          value="Robot Died?"
+          selected={match.died!}
+          onChange={() => {
+            setMatch({
+              ...match,
+              died: !match.died,
+            });
+          }}>
+          Robot Died
+        </StyledRedToggleButton>
+        <Divider
+          orientation="horizontal"
+          flexItem
+        />
         <BigCounter
           value={match.teleopNetZoneSamp!}
           increment={() => {
@@ -77,26 +94,11 @@ export function Teleop({ match, setMatch }: TeleopProps) {
       <Divider orientation="vertical" />
       <Stack
         sx={{
-          width: "50%",
-          height: "100%",
+          flex: 1,
           padding: 2,
+          overflowY: "scroll",
         }}
         gap={2}>
-        <StyledRedToggleButton
-          value="Robot Died?"
-          selected={match.died!}
-          onChange={() => {
-            setMatch({
-              ...match,
-              died: !match.died,
-            });
-          }}>
-          Robot Died
-        </StyledRedToggleButton>
-        <Divider
-          orientation="horizontal"
-          flexItem
-        />
         <BigCounter
           value={match.teleopLowChamberSpec!}
           increment={() => {
@@ -140,6 +142,13 @@ export function Teleop({ match, setMatch }: TeleopProps) {
           <StyledToggleButton
             value="Observation Zone Park"
             selected={match.endgameObservationZone!}
+            sx={{
+              flex: 1,
+              padding: 2,
+              '&:hover': {
+                backgroundColor: '#313438', // light teal or whatever fits your theme
+              },
+            }}
             onChange={() => {
               setMatch({
                 ...match,
@@ -154,6 +163,10 @@ export function Teleop({ match, setMatch }: TeleopProps) {
           <StyledToggleButton
             value="L1 Ascent"
             selected={match.endgameL1Climb!}
+            sx={{
+              flex: 1,
+              padding: 2,
+            }}
             onChange={() => {
               setMatch({
                 ...match,
@@ -168,6 +181,10 @@ export function Teleop({ match, setMatch }: TeleopProps) {
           <StyledToggleButton
             value="L2 Ascent"
             selected={match.endgameL2Climb!}
+            sx={{
+              flex: 1,
+              padding: 2,
+            }}
             onChange={() => {
               setMatch({
                 ...match,
@@ -182,6 +199,10 @@ export function Teleop({ match, setMatch }: TeleopProps) {
           <StyledToggleButton
             value="L3 Ascent"
             selected={match.endgameL3Climb!}
+            sx={{
+              flex: 1,
+              padding: 2,
+            }}
             onChange={() => {
               setMatch({
                 ...match,
