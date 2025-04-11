@@ -8,10 +8,10 @@ type PostmatchProps = {
 export default function Postmatch({ match, setMatch }: PostmatchProps) {
   return (
     <Stack
-      direction="row"
+      direction="column"
       sx={{
         width: 1,
-        height: 1,
+        height: "auto",
       }}>
       <Stack
         sx={{
@@ -19,10 +19,6 @@ export default function Postmatch({ match, setMatch }: PostmatchProps) {
           padding: 2,
         }}
         gap={2}></Stack>
-      <Divider
-        orientation="vertical"
-        flexItem
-      />
       <Stack
         sx={{
           flex: 1,

@@ -51,6 +51,7 @@ export default function Upload() {
         backgroundColor: "background.default",
         width: 1,
         height: 1,
+        justifyContent: "center",
       }}>
       <Snackbar
         open={status !== ""}

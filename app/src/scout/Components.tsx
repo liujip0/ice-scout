@@ -1,5 +1,5 @@
 import { Add, Remove } from "@mui/icons-material";
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Stack, TextField, Divider } from "@mui/material";
 
 type BigCounterProps = {
   value: number;
@@ -20,6 +20,8 @@ export function BigCounter({
   return (
     <Stack
       direction="row"
+      spacing={{ xs: 1, sm: 1 }}
+      useFlexGap
       sx={{
         width: 1,
       }}>

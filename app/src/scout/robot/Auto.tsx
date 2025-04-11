@@ -60,19 +60,37 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
   });
 
   return (
-    <Stack
-      direction="row"
-      sx={{
-        width: 1,
-        height: 1,
-      }}>
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        sx={{
+          height: "auto",
+          width: "100%",
+          overflow: "auto",
+        }}
+      >
       <Stack
         sx={{
           flex: 1,
           padding: 2,
-          overflowY: "scroll",
+          overflowY: "scroll"
         }}
         gap={2}>
+        <StyledRedToggleButton
+          value="Robot Died?"
+          selected={match.died!}
+          onChange={() => {
+            teleopTimeoutButtonClick();
+            setMatch({
+              ...match,
+              died: !match.died,
+            });
+          }}>
+          Robot Died
+        </StyledRedToggleButton>
+        <Divider
+          orientation="horizontal"
+          flexItem
+        />
         <BigCounter
           value={match.autoNetZoneSamp!}
           increment={() => {
@@ -131,27 +149,11 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
       <Divider orientation="vertical" />
       <Stack
         sx={{
-          width: "50%",
-          height: "100%",
+          flex: 1,
           padding: 2,
+          overflowY: "scroll",
         }}
         gap={2}>
-        <StyledRedToggleButton
-          value="Robot Died?"
-          selected={match.died!}
-          onChange={() => {
-            teleopTimeoutButtonClick();
-            setMatch({
-              ...match,
-              died: !match.died,
-            });
-          }}>
-          Robot Died
-        </StyledRedToggleButton>
-        <Divider
-          orientation="horizontal"
-          flexItem
-        />
         <BigCounter
           value={match.autoLowChamberSpec!}
           increment={() => {
@@ -209,7 +211,7 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
             }}
             sx={{
               flex: 1,
-              padding: 1,
+              padding: 2,
             }}>
             Observation Zone Park
           </StyledToggleButton>
@@ -226,7 +228,7 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
             }}
             sx={{
               flex: 1,
-              padding: 1,
+              padding: 2,
             }}>
             L1 Ascent
           </StyledToggleButton>
