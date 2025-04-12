@@ -56,22 +56,22 @@ export const updateScheduleFromTba = async (
       error: string;
     }
 > => {
-  const etag = await env.KV.get("tba-etag");
+  // const etag = await env.KV.get("tba-etag");
   const eventRes = await fetch(
     "https://www.thebluealliance.com/api/v3/event/" +
       eventKey +
       "/matches/simple",
     {
       method: "GET",
-      headers:
-        etag ?
-          {
-            "X-TBA-Auth-Key": env.TBA_API_TOKEN,
-            "If-None-Match": etag,
-          }
-        : {
-            "X-TBA-Auth-Key": env.TBA_API_TOKEN,
-          },
+      // headers:
+      //   etag ?
+      //     {
+      //       "X-TBA-Auth-Key": env.TBA_API_TOKEN,
+      //       "If-None-Match": etag,
+      //     }
+      //   : {
+      //       "X-TBA-Auth-Key": env.TBA_API_TOKEN,
+      //     },
     }
   );
 
@@ -81,15 +81,15 @@ export const updateScheduleFromTba = async (
         "https://www.thebluealliance.com/api/v3/event/" + eventKey + "/simple",
         {
           method: "GET",
-          headers:
-            etag ?
-              {
-                "X-TBA-Auth-Key": env.TBA_API_TOKEN,
-                "If-None-Match": etag,
-              }
-            : {
-                "X-TBA-Auth-Key": env.TBA_API_TOKEN,
-              },
+          // headers:
+          // etag ?
+          //   {
+          //     "X-TBA-Auth-Key": env.TBA_API_TOKEN,
+          //     "If-None-Match": etag,
+          //   }
+          // : {
+          //     "X-TBA-Auth-Key": env.TBA_API_TOKEN,
+          //   },
         }
       );
       console.log(eventInfoRes.status);
@@ -102,7 +102,7 @@ export const updateScheduleFromTba = async (
       };
 
       if (eventRes.headers.has("ETag")) {
-        await env.KV.put("tba-etag", eventRes.headers.get("ETag")!);
+        // await env.KV.put("tba-etag", eventRes.headers.get("ETag")!);
       }
       const eventBody: TbaSimpleMatch[] = await eventRes.json();
 
