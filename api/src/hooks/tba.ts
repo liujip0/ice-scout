@@ -53,10 +53,10 @@ export const tba = async (opts: WebhooksOpts): Promise<Response> => {
   const body: TbaRequest = await opts.request.json();
   switch (body.message_type) {
     case "verification": {
-      await opts.env.KV.put(
-        "tba-verification-key",
-        body.message_data.verification_key
-      );
+      // await opts.env.KV.put(
+      //   "tba-verification-key",
+      //   body.message_data.verification_key
+      // );
       console.log(body.message_data.verification_key);
       return new Response("Verification token received.");
     }
