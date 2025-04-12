@@ -52,8 +52,7 @@ export default function Prematch({
         height: "auto",
         width: "100%",
         overflow: "auto",
-      }}
-    >
+      }}>
       <Stack
         sx={{
           flex: 1,

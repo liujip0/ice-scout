@@ -60,19 +60,18 @@ export default function Auto({ match, setMatch, eventEmitter }: AutoProps) {
   });
 
   return (
-      <Stack
-        direction={{ xs: "column", md: "row" }}
-        sx={{
-          height: "auto",
-          width: "100%",
-          overflow: "auto",
-        }}
-      >
+    <Stack
+      direction={{ xs: "column", md: "row" }}
+      sx={{
+        height: "auto",
+        width: "100%",
+        overflow: "auto",
+      }}>
       <Stack
         sx={{
           flex: 1,
           padding: 2,
-          overflowY: "scroll"
+          overflowY: "scroll",
         }}
         gap={2}>
         <StyledRedToggleButton

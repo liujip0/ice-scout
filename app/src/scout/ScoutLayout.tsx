@@ -327,14 +327,13 @@ export default function ScoutLayout({
               }
             }}
             scrollButtons="auto"
-            allowScrollButtonsMobile
-            >
+            allowScrollButtonsMobile>
             <Tab
               label="Pre"
               value="prematch"
               sx={{
                 minHeight: 32, // Reduce height of individual Tab
-                padding: '4px 8px', // Optional: reduce padding
+                padding: "4px 8px", // Optional: reduce padding
               }}
             />
             <Tab
@@ -342,7 +341,7 @@ export default function ScoutLayout({
               value="auto"
               sx={{
                 minHeight: 32, // Reduce height of individual Tab
-                padding: '4px 8px', // Optional: reduce padding
+                padding: "4px 8px", // Optional: reduce padding
               }}
               disabled={match.noShow}
             />
@@ -386,11 +385,10 @@ export default function ScoutLayout({
             </Button>
             <Button
               onClick={() => {
-                prematchCheck()
+                prematchCheck();
                 if (!prematchCheck()) {
                   setMatchStage("auto");
                 }
-                
               }}
               color="secondary"
               variant="contained">
@@ -409,75 +407,71 @@ export default function ScoutLayout({
                     putEntries.mutate([match]);
                   }
                 }}
-                color="secondary"
-                >
+                color="secondary">
                 Submit
-
               </Button>
             )}
           </>
         : matchStage === "auto" ?
-        <>
-          <Button
-            onClick={() => {
-              prematchCheck()
-              if (!prematchCheck()) {
-                setMatchStage("teleop");
-              }
-              
-            }}
-            color="secondary"
-            variant="contained">
-            TELEOP
-          </Button>
-          {(match as TeamMatchEntry).noShow && (
+          <>
             <Button
-              variant="contained"
               onClick={() => {
-                if ((match as TeamMatchEntry).noShow) {
-                  setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
-                  putEntries.mutate([
-                    noShowTeamMatchEntry(match as TeamMatchEntry),
-                  ]);
-                } else {
-                  putEntries.mutate([match]);
+                prematchCheck();
+                if (!prematchCheck()) {
+                  setMatchStage("teleop");
                 }
-              }}>
-              Submit
+              }}
+              color="secondary"
+              variant="contained">
+              TELEOP
             </Button>
-          )}
-        </>
+            {(match as TeamMatchEntry).noShow && (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  if ((match as TeamMatchEntry).noShow) {
+                    setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
+                    putEntries.mutate([
+                      noShowTeamMatchEntry(match as TeamMatchEntry),
+                    ]);
+                  } else {
+                    putEntries.mutate([match]);
+                  }
+                }}>
+                Submit
+              </Button>
+            )}
+          </>
         : matchStage === "teleop" ?
-        <>
-          <Button
-            onClick={() => {
-              prematchCheck()
-              if (!prematchCheck()) {
-                setMatchStage("postmatch");
-              }
-              
-            }}
-            color="secondary"
-            variant="contained">
-            POSTMATCH
-          </Button>
-          {(match as TeamMatchEntry).noShow && (
+          <>
             <Button
-              variant="contained"
               onClick={() => {
-                if ((match as TeamMatchEntry).noShow) {
-                  setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
-                  putEntries.mutate([
-                    noShowTeamMatchEntry(match as TeamMatchEntry),
-                  ]);
-                } else {
-                  putEntries.mutate([match]);
+                prematchCheck();
+                if (!prematchCheck()) {
+                  setMatchStage("postmatch");
                 }
-              }}>
-              Submit
+              }}
+              color="secondary"
+              variant="contained">
+              POSTMATCH
             </Button>
-          )}
-        </>
+            {(match as TeamMatchEntry).noShow && (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  if ((match as TeamMatchEntry).noShow) {
+                    setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
+                    putEntries.mutate([
+                      noShowTeamMatchEntry(match as TeamMatchEntry),
+                    ]);
+                  } else {
+                    putEntries.mutate([match]);
+                  }
+                }}>
+                Submit
+              </Button>
+            )}
+          </>
         : matchStage === "postmatch" ?
           <Button
             variant="contained"

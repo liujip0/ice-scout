@@ -1,5 +1,5 @@
 import { TeamMatchEntry } from "@ice-scout/api/src/utils/dbtypes.ts";
-import { Divider, Stack, TextField } from "@mui/material";
+import { Stack, TextField } from "@mui/material";
 
 type PostmatchProps = {
   match: TeamMatchEntry;

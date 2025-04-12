@@ -219,14 +219,13 @@ export default function SavedMatches({
           </Button>
         </>
       }>
-    <Stack
-      direction={{ xs: "column", md: "row" }}
-      sx={{
-        height: "auto",
-        width: "100%",
-        overflow: "auto",
-      }}
-    >
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        sx={{
+          height: "auto",
+          width: "100%",
+          overflow: "auto",
+        }}>
         <Stack
           sx={{
             flex: 1,

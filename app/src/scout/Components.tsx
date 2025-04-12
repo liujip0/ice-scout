@@ -1,5 +1,5 @@
 import { Add, Remove } from "@mui/icons-material";
-import { Button, Stack, TextField, Divider } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 
 type BigCounterProps = {
   value: number;

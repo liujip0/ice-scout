@@ -155,7 +155,6 @@ export default function DeviceSetup({
             }}
             color="secondary"
             variant="contained">
-              
             Done
           </Button>
         </>
@@ -323,13 +322,13 @@ export default function DeviceSetup({
                 1
               </StyledToggleButton>
               <StyledToggleButton
-              value={2}
-              sx={{
-                flex: 1,
-                padding: 2
-              }}>
-              2
-            </StyledToggleButton>
+                value={2}
+                sx={{
+                  flex: 1,
+                  padding: 2,
+                }}>
+                2
+              </StyledToggleButton>
             </ToggleButtonGroup>
             <FormHelperText
               color="error"

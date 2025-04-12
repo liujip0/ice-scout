@@ -18,8 +18,7 @@ export function Teleop({ match, setMatch }: TeleopProps) {
         height: "auto",
         width: "100%",
         overflow: "auto",
-      }}
-    >
+      }}>
       <Stack
         sx={{
           flex: 1,
@@ -145,8 +144,8 @@ export function Teleop({ match, setMatch }: TeleopProps) {
             sx={{
               flex: 1,
               padding: 2,
-              '&:hover': {
-                backgroundColor: '#313438', // light teal or whatever fits your theme
+              "&:hover": {
+                backgroundColor: "#313438", // light teal or whatever fits your theme
               },
             }}
             onChange={() => {
