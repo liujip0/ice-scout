@@ -47,11 +47,13 @@ export default function Prematch({
 
   return (
     <Stack
-      direction="row"
+      direction={{ xs: "column", md: "row" }}
       sx={{
-        width: 1,
-        height: 1,
-      }}>
+        height: "auto",
+        width: "100%",
+        overflow: "auto",
+      }}
+    >
       <Stack
         sx={{
           flex: 1,
@@ -445,6 +447,11 @@ export default function Prematch({
                 }
               </StyledToggleButton>
             </ToggleButtonGroup>
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+            />
             <TextField
               value={isNaN(match.teamNumber!) ? "" : match.teamNumber}
               onChange={(event) => {

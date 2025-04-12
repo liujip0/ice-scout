@@ -153,16 +153,19 @@ export default function DeviceSetup({
                 navigate("/scout");
               }
             }}
+            color="secondary"
             variant="contained">
+              
             Done
           </Button>
         </>
       }>
       <Stack
-        direction="row"
+        direction={{ xs: "column", md: "row" }}
         sx={{
-          height: 1,
-          width: 1,
+          height: "auto",
+          width: "100%",
+          overflow: "auto",
         }}>
         <Snackbar
           open={status !== ""}
@@ -240,7 +243,7 @@ export default function DeviceSetup({
               color="primary"
               sx={{
                 width: 1,
-                borderWidth: allianceError !== "" ? 2 : 0,
+                borderWidth: allianceError !== "" ? 1 : 0,
                 borderColor: "error.main",
                 borderStyle: "solid",
               }}>
@@ -320,13 +323,13 @@ export default function DeviceSetup({
                 1
               </StyledToggleButton>
               <StyledToggleButton
-                value={2}
-                sx={{
-                  flex: 1,
-                  padding: 2,
-                }}>
-                2
-              </StyledToggleButton>
+              value={2}
+              sx={{
+                flex: 1,
+                padding: 2
+              }}>
+              2
+            </StyledToggleButton>
             </ToggleButtonGroup>
             <FormHelperText
               color="error"

@@ -326,16 +326,24 @@ export default function ScoutLayout({
                 setMatchStage(value);
               }
             }}
-            variant="scrollable"
-            scrollButtons
-            allowScrollButtonsMobile>
+            scrollButtons="auto"
+            allowScrollButtonsMobile
+            >
             <Tab
-              label="Prematch"
+              label="Pre"
               value="prematch"
+              sx={{
+                minHeight: 32, // Reduce height of individual Tab
+                padding: '4px 8px', // Optional: reduce padding
+              }}
             />
             <Tab
               label="Auto"
               value="auto"
+              sx={{
+                minHeight: 32, // Reduce height of individual Tab
+                padding: '4px 8px', // Optional: reduce padding
+              }}
               disabled={match.noShow}
             />
             <Tab
@@ -351,7 +359,7 @@ export default function ScoutLayout({
               }}
             />
             <Tab
-              label="Postmatch"
+              label="Post"
               value="postmatch"
               disabled={match.noShow}
             />
@@ -376,6 +384,18 @@ export default function ScoutLayout({
               }}>
               Exit
             </Button>
+            <Button
+              onClick={() => {
+                prematchCheck()
+                if (!prematchCheck()) {
+                  setMatchStage("auto");
+                }
+                
+              }}
+              color="secondary"
+              variant="contained">
+              Auto
+            </Button>
             {(match as TeamMatchEntry).noShow && (
               <Button
                 variant="contained"
@@ -388,14 +408,80 @@ export default function ScoutLayout({
                   } else {
                     putEntries.mutate([match]);
                   }
-                }}>
+                }}
+                color="secondary"
+                >
                 Submit
+
               </Button>
             )}
           </>
+        : matchStage === "auto" ?
+        <>
+          <Button
+            onClick={() => {
+              prematchCheck()
+              if (!prematchCheck()) {
+                setMatchStage("teleop");
+              }
+              
+            }}
+            color="secondary"
+            variant="contained">
+            TELEOP
+          </Button>
+          {(match as TeamMatchEntry).noShow && (
+            <Button
+              variant="contained"
+              onClick={() => {
+                if ((match as TeamMatchEntry).noShow) {
+                  setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
+                  putEntries.mutate([
+                    noShowTeamMatchEntry(match as TeamMatchEntry),
+                  ]);
+                } else {
+                  putEntries.mutate([match]);
+                }
+              }}>
+              Submit
+            </Button>
+          )}
+        </>
+        : matchStage === "teleop" ?
+        <>
+          <Button
+            onClick={() => {
+              prematchCheck()
+              if (!prematchCheck()) {
+                setMatchStage("postmatch");
+              }
+              
+            }}
+            color="secondary"
+            variant="contained">
+            POSTMATCH
+          </Button>
+          {(match as TeamMatchEntry).noShow && (
+            <Button
+              variant="contained"
+              onClick={() => {
+                if ((match as TeamMatchEntry).noShow) {
+                  setMatch(noShowTeamMatchEntry(match as TeamMatchEntry));
+                  putEntries.mutate([
+                    noShowTeamMatchEntry(match as TeamMatchEntry),
+                  ]);
+                } else {
+                  putEntries.mutate([match]);
+                }
+              }}>
+              Submit
+            </Button>
+          )}
+        </>
         : matchStage === "postmatch" ?
           <Button
             variant="contained"
+            color="secondary"
             onClick={() => {
               if ((match as TeamMatchEntry).noShow) {
                 setMatch(noShowTeamMatchEntry(match));
