@@ -1,6 +1,6 @@
 # 2024 I.C.E. Robotics Scouting App
 
-This repository houses a React progressive web app serving as the offline-first scouting app custom designed for use by I.C.E. Robotics in the 2025 FIRST Tech Challenge game, Into the Deep.
+This repository houses a React progressive web app serving as the offline-first scouting app custom designed for use by [I.C.E. Robotics](https://github.com/ftc11329) in the 2025 FIRST Tech Challenge game, Into the Deep.
 
 ## Development Instructions
 
