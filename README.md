@@ -1,6 +1,6 @@
-# 2025 Indiana Scouting Alliance App
+# 2024 I.C.E. Robotics Scouting App
 
-This repository houses a React progressive web app serving as the offline-first scouting app custom designed for use by the Indiana Scouting Alliance in the 2025 FIRST Robotics Competition game, Reefscape.
+This repository houses a React progressive web app serving as the offline-first scouting app custom designed for use by I.C.E. Robotics in the 2025 FIRST Tech Challenge game, Into the Deep.
 
 ## Development Instructions
 
